@@ -40,7 +40,7 @@ body {
   --radius: 0.5rem;
 }
 .dark  {
-  --background: 152 50% 5%;
+  --background: 0 0% 0%;
   --foreground: 152 5% 90%;
   --card: 152 50% 0%;
   --card-foreground: 152 5% 90%;
