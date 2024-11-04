@@ -1,11 +1,27 @@
-## Next.js + Wagmi + Rainbow Kit + Anvil chain starter code
+# 🎨 CartooNFT
+An NFT Marketplace for Cartoons
+----
 
-This is the starter code to work with Next.js + Wagmi + Rainbow Kit + Anvil chain starter code.
-Required functionality can be built on top of it easily. 
+## 🚀 Tech Stack
 
+- Next.js - Frontend framework
+- Wagmi - Smart contract interactions
+- Foundry - Build & test smart contracts
+- ShadCN UI - Beautiful styling
+- Rainbow Kit - Wallet connection
+- Rivet Wallet - For seamless wallet interactions
+  
 
-### How to use it?
+## 🌟 Features Implemented
+- 🖼️ Mint your own NFT
+- 📜 List NFTs on the marketplace
+- ❤️ Like or 💔 Unlike NFTs
+- 🛒 Purchase NFTs with ease
+- 🧩 Multiple filter options for easy browsing
 
-- Clone this git repo.
-- Rename .env.example to .env
-- USE & ENJOY
+## 🚧 Features Coming Soon
+- 🕑 NFT Auctions
+- 💸 Payments with ERC20 Tokens
+
+## 🌐 Smart Contract Deployments
+- Arbitrum Sepolia: 0x318996166F95dE829e97603698B7A3Cd4DF1AbcA
