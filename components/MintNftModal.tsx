@@ -44,7 +44,7 @@ export default function MintNftModal({nftsTokenIds, queryKey}: {nftsTokenIds: an
   const [loading, setLoading] = React.useState(false)
   const [category, setCategory] = React.useState("")
   const [isMintingProgressOpen, setIsMintingProgressOpen] = React.useState(false)
-  const { isSuccess: isTxSuccess, isLoading: isTxLoading, isError: isTxErrored } = useTransactionReceipt({
+  const { isSuccess: isTxSuccess, isLoading: isTxLoading, error: isTxErrored } = useTransactionReceipt({
     hash: mintNftHash
   })
   // const {basicNftContractAddress, accountAddress} = useAppContext()
@@ -57,6 +57,8 @@ export default function MintNftModal({nftsTokenIds, queryKey}: {nftsTokenIds: an
   // }
 
   console.log("Errorrrrrr in MintNftModal: ", error)
+
+  console.log("Minting errored: ", isTxErrored)
 
 
   const uploadFile = async () => {
@@ -153,12 +155,12 @@ export default function MintNftModal({nftsTokenIds, queryKey}: {nftsTokenIds: an
     if (isTxSuccess || isTxErrored) {
       setLoading(false)
       setOpen(false)
-      if(isTxSuccess) {
-        toast.success("Minting Success!")
-      }
-      else if(isTxErrored) {
-        toast.error("Minting Failed!")
-      }
+      // if(isTxSuccess) {
+      //   toast.success("Minting Success!")
+      // }
+      // else if(isTxErrored) {
+      //   toast.error("Minting Failed!")
+      // }
       queryClient.invalidateQueries({ queryKey })
     }
   }, [isTxSuccess, isTxErrored, queryKey])

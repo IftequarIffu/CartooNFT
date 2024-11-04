@@ -113,7 +113,7 @@ export default function Dashboard() {
 
               {currentNFTsTokenIds?.map( (tokenId) => (
                 
-                <NftCard nftsTokenId={tokenId}/>
+                <NftCard key={tokenId} nftsTokenId={tokenId}/>
               ))}
               
             </div>
