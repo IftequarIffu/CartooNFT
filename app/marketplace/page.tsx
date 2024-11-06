@@ -24,13 +24,13 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 
 export default function Marketplace() {
 
-    const {address} = useAccount()
+    // const {address} = useAccount()
 
     let listingPrice = Number(useReadContract({
         abi: marketPlaceAbi,
         address: process.env.NEXT_PUBLIC_NFT_MARKETPLACE_CONTRACT_ADDRESS as `0x${string}`,
         functionName: 'getListingPrice',
-        account: address
+        // account: address
       }).data)
 
     listingPrice = listingPrice/(10**18)
@@ -97,7 +97,7 @@ export default function Marketplace() {
     abi: basicNftAbi,
     address: basicNftAddress,
     functionName: 'getListedNftsTokenIds',
-    account: address
+    // account: address
   })
 
   const fetchNft = async(tokenId: number) => {

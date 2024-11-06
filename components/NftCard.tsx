@@ -13,9 +13,10 @@ import { parseEther } from 'viem'
 import { CheckCircle2, Heart } from 'lucide-react';
 import { Badge } from './ui/badge'
 import { timeAgo } from '@/lib/utils'
-import { useToast } from "@/hooks/use-toast"
+// import { useToast } from "@/hooks/use-toast"
 import { queryClient } from '@/app/providers'
 import { Spinner } from './LoadingSpinner'
+import { toast } from 'sonner'
 
 
 
@@ -26,7 +27,7 @@ const NftCard = ({nftsTokenId} : {nftsTokenId: any}) => {
   const { data: listNftTxHash,  writeContract: listNftWriteContract } = useWriteContract()
   const { data: likeOrUnlikeNftTxHash, error: likeOrUnlikeAnNftErrored,  writeContract: likeOrUnlikeNftWriteContract } = useWriteContract()
   const { data: buyNftTxHash, writeContract: buyNftWriteContract } = useWriteContract()
-  const {toast} = useToast()
+  // const {toast} = useToast()
 
 
   const { isSuccess: isListNftTxSuccess, isError: isListNftErrored } = useTransactionReceipt({
@@ -209,7 +210,7 @@ const NftCard = ({nftsTokenId} : {nftsTokenId: any}) => {
     }
 
 
-  }, [isLikeOrUnlikeNftTxSuccess, isLikeOrUnlikeNftErrored,  getMyLikedNftsTokenIdsQueryKey, getMyNftsTokenIdsQueryKey, getNftFromTokenIdQueryKey, toast])
+  }, [isLikeOrUnlikeNftTxSuccess, isLikeOrUnlikeNftErrored,  getMyLikedNftsTokenIdsQueryKey, getMyNftsTokenIdsQueryKey, getNftFromTokenIdQueryKey])
 
 
   useEffect(() => {
@@ -392,8 +393,28 @@ const NftCard = ({nftsTokenId} : {nftsTokenId: any}) => {
 
             {
               isNftLiked ? 
-              (<Heart fill='red' className='hover:cursor-pointer' color='red' strokeWidth={0} size={36} onClick={() => likeOrUnlikeNft(nft?.tokenId as unknown as number)} />) : 
-              (<Heart size={36} className='hover:cursor-pointer'  color='red' onClick={() => likeOrUnlikeNft(nft?.tokenId as unknown as number)} />)
+              (<Heart fill='red' className='hover:cursor-pointer' color='red' strokeWidth={0} size={36} onClick={() => {
+                if(address){
+                  likeOrUnlikeNft(nft?.tokenId as unknown as number)
+                } 
+                
+                else{
+                  toast.error("Wallet is not connected!")
+                }
+              }
+              }/>) : 
+              (<Heart size={36} className='hover:cursor-pointer'  color='red' onClick={() => 
+              {
+                if(address){
+                  likeOrUnlikeNft(nft?.tokenId as unknown as number)
+                } 
+                
+                else{
+                  toast.error("Wallet is not connected!")
+                }
+              }
+
+              } />)
             }
             {Number(nft?.numberOfLikes)}
             
@@ -450,13 +471,19 @@ const NftCard = ({nftsTokenId} : {nftsTokenId: any}) => {
       {
         nft?.isListed == true && nft.isSold == false && nft.owner != address && (
           <Button onClick={async() => {
-            console.log(`Buying NFT: ${nft.name}`)
-            try {
-              setIsBuyingLoading(true)
-              await buyNft(Number(nft.tokenId), Number(nft.price)/(10**18))
-            } catch (error: any) {
-              console.log("Errorrrrrrrrrrr: ", error.message)
+            if(address) {
+              console.log(`Buying NFT: ${nft.name}`)
+              try {
+                setIsBuyingLoading(true)
+                await buyNft(Number(nft.tokenId), Number(nft.price)/(10**18))
+              } catch (error: any) {
+                console.log("Errorrrrrrrrrrr: ", error.message)
+              }
             }
+            else{
+              toast.error("Wallet is not connected!")
+            }
+            
   
           }} 
           disabled={isBuyingLoading}
