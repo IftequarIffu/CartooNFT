@@ -50,7 +50,7 @@ export default function Marketplace() {
   const [notSoldNfts, setNotSoldNfts] = React.useState(false)
 
   const [currentPage, setCurrentPage] = React.useState(1)
-  const itemsPerPage = 4
+  const itemsPerPage = 12
 
 
   type NftType = {
@@ -209,7 +209,7 @@ const filteredNFTTokenIds = React.useMemo(() => {
   return (
     <div className="flex min-h-screen ">
       {/* Sidebar */}
-      <aside className="w-64  p-6 hidden lg:block">
+      <aside className="w-64  p-6 hidden lg:block sticky h-screen top-0">
         <Link href={"/"}>
             <h1 className="text-3xl font-bold mb-4 sm:mb-0">CartooNFT</h1>
         </Link>
@@ -256,12 +256,12 @@ const filteredNFTTokenIds = React.useMemo(() => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 ">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <header className="flex flex-col sm:flex-row justify-between items-center mb-8">
+          <header className="flex flex-col p-6 sm:flex-row justify-between items-center mb-8 sticky top-0 z-50 dark:bg-black bg-background">
             <Link href={"/dashboard"}>
-                <Button className=''>
+                <Button className='bg-purple-500 hover:bg-purple-400'>
                   <ChevronLeft />
                   Back to Dashboard
                   
@@ -296,7 +296,7 @@ const filteredNFTTokenIds = React.useMemo(() => {
           </header>
 
           {/* NFT Grid */}
-          <h1 className="text-2xl font-bold mb-4">Marketplace</h1>
+          <h1 className="text-2xl font-bold mb-4 px-6">Marketplace</h1>
 
           {
             !currentNFTsTokenIds || currentNFTsTokenIds.length <= 0 ? (<div className='flex justify-center items-center mt-36 text-3xl'>Aww Snap!! No NFTs found</div>) : 
@@ -311,7 +311,7 @@ const filteredNFTTokenIds = React.useMemo(() => {
           ))}
             </div>
 
-            <div className="mt-8 flex justify-center items-center space-x-2">
+            <div className="mt-8 flex justify-center items-center space-x-2 p-6">
               <Button
                   variant="outline"
                   size="icon"
