@@ -1,73 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 200 30% 98%;
+    --foreground: 200 50% 20%;
+ 
+    --card: 200 30% 96%;
+    --card-foreground: 200 50% 20%;
+ 
+    --popover: 200 30% 96%;
+    --popover-foreground: 200 50% 20%;
+ 
+    --primary: 200 100% 40%;
+    --primary-foreground: 200 30% 98%;
+ 
+    --secondary: 180 60% 50%;
+    --secondary-foreground: 200 30% 98%;
+ 
+    --muted: 200 20% 80%;
+    --muted-foreground: 200 50% 40%;
+ 
+    --accent: 220 70% 60%;
+    --accent-foreground: 200 30% 98%;
+ 
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 200 30% 98%;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+    --border: 200 50% 80%;
+    --input: 200 50% 80%;
+    --ring: 200 100% 40%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 215 53% 6%;
+    --foreground: 186 100% 95%;
+ 
+    --card: 215 50% 10%;
+    --card-foreground: 186 100% 95%;
+ 
+    --popover: 215 50% 10%;
+    --popover-foreground: 186 100% 95%;
+ 
+    --primary: 186 100% 50%;
+    --primary-foreground: 215 53% 6%;
+ 
+    --secondary: 199 100% 40%;
+    --secondary-foreground: 215 53% 6%;
+ 
+    --muted: 215 40% 20%;
+    --muted-foreground: 186 30% 70%;
+ 
+    --accent: 174 100% 35%;
+    --accent-foreground: 215 53% 6%;
+ 
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 186 100% 95%;
+ 
+    --border: 215 40% 20%;
+    --input: 215 40% 20%;
+    --ring: 186 100% 50%;
   }
 }
-
-
-@layer base {
-  
-
-  
-:root  {
-  --background: 152 90% 95%;
-  --foreground: 152 5% 0%;
-  --card: 152 50% 90%;
-  --card-foreground: 152 5% 10%;
-  --popover: 152 90% 95%;
-  --popover-foreground: 152 95% 0%;
-  --primary: 152 56% 34%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 152 30% 70%;
-  --secondary-foreground: 0 0% 0%;
-  --muted: 114 30% 85%;
-  --muted-foreground: 152 5% 35%;
-  --accent: 114 30% 80%;
-  --accent-foreground: 152 5% 10%;
-  --destructive: 0 90% 30%;
-  --destructive-foreground: 152 5% 90%;
-  --border: 152 30% 50%;
-  --input: 152 30% 18%;
-  --ring: 152 56% 34%;
-  --radius: 0.5rem;
-}
-.dark  {
-  --background: 0 0% 0%;
-  --foreground: 152 5% 90%;
-  --card: 152 50% 0%;
-  --card-foreground: 152 5% 90%;
-  --popover: 152 50% 5%;
-  --popover-foreground: 152 5% 90%;
-  --primary: 152 56% 34%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 152 30% 10%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 114 30% 15%;
-  --muted-foreground: 152 5% 60%;
-  --accent: 114 30% 15%;
-  --accent-foreground: 152 5% 90%;
-  --destructive: 0 90% 30%;
-  --destructive-foreground: 152 5% 90%;
-  --border: 152 30% 18%;
-  --input: 152 30% 18%;
-  --ring: 152 56% 34%;
-  --radius: 0.5rem;
-}
-
-  
-
-}
-
-
-
+ 
 @layer base {
   * {
     @apply border-border;
@@ -77,4 +75,38 @@ body {
   }
 }
 
+@layer utilities {
+  .deep-sea-gradient {
+    @apply bg-gradient-to-b from-primary/20 via-secondary/20 to-accent/20;
+  }
 
+  .underwater-blur {
+    @apply backdrop-blur-sm bg-background/70;
+  }
+
+  .bubble {
+    @apply absolute rounded-full bg-primary/30 animate-float;
+  }
+
+  .seaweed {
+    @apply absolute bottom-0 w-4 bg-secondary animate-sway origin-bottom;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: sway 3s ease-in-out infinite;
+}

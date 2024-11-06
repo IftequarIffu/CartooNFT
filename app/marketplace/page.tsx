@@ -259,9 +259,9 @@ const filteredNFTTokenIds = React.useMemo(() => {
       <main className="flex-1 ">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <header className="flex flex-col p-6 sm:flex-row justify-between items-center mb-8 sticky top-0 z-50 dark:bg-black bg-background">
+          <header className="flex flex-col p-6 sm:flex-row justify-between items-center mb-8 sticky bg-background top-0 z-50 ">
             <Link href={"/dashboard"}>
-                <Button className='bg-purple-500 hover:bg-purple-400'>
+                <Button className='bg-white dark:bg-black text-black hover:text-white dark:text-white dark:hover:bg-primary dark:hover:text-black'>
                   <ChevronLeft />
                   Back to Dashboard
                   
