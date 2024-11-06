@@ -192,7 +192,15 @@ export default function MintNftModal({nftsTokenIds, queryKey}: {nftsTokenIds: an
                 variant="outline"
                 size="lg"
                 className="h-48 w-48 rounded-full"
-                onClick={() => setOpen(true)}
+                onClick={() => {
+                  if(address) {
+                    setOpen(true)
+                  }
+                  else{
+                    toast.error("Wallet is not connected!")
+                  }
+                  
+                }}
                 >
                 <PlusCircle className="h-24 w-24" />
                 <span className="sr-only">Add new NFT</span>

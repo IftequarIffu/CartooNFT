@@ -93,7 +93,7 @@ export default function Marketplace() {
 
 
 
-  const {data: listedNftsTokenIds, queryKey: getListedNftsTokenIdsQueryKey} = useReadContract({
+  const {data: listedNftsTokenIds, isLoading: isListedNftsLoading, queryKey: getListedNftsTokenIdsQueryKey} = useReadContract({
     abi: basicNftAbi,
     address: basicNftAddress,
     functionName: 'getListedNftsTokenIds',
