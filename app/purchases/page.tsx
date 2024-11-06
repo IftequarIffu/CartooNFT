@@ -70,11 +70,12 @@ export default function Favorites() {
             <ThemeToggle />
           </header>
           <main className="flex-1 overflow-y-auto w-full p-6">
+          <h1 className="mb-8 text-2xl font-bold">My Purchases</h1>
             {
                 myPurchasedNftsTokenIds == undefined || myPurchasedNftsTokenIds?.length == 0 ? (<div className='flex justify-center items-center mt-36 text-3xl'>No Purchases yet!!!</div> ) :
                 (
                     <>
-                    <h1 className="mb-8 text-2xl font-bold">My Purchases</h1>
+                    
                     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     
                     {myPurchasedNftsTokenIds?.map( (tokenId) => (

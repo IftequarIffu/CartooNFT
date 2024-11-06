@@ -106,36 +106,44 @@ export default function MyLikedNfts() {
                 <NftCard nftsTokenId={tokenId}/>
               ))}
             </div>
-
-            {/* Pagination */}
-            <div className="mt-16 flex justify-center items-center space-x-2">
-            <Button
-                variant="outline"
-                size="icon"
-                onClick={goToPreviousPage}
-                disabled={currentPage === 1}
-            >
-                <ChevronLeft  className="h-4 w-4" />
-            </Button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <Button
-                key={page}
-                variant={currentPage === page ? "default" : "outline"}
-                size="icon"
-                onClick={() => goToPage(page)}
-                >
-                {page}
-                </Button>
-            ))}
-            <Button
-                variant="outline"
-                size="icon"
-                onClick={goToNextPage}
-                disabled={currentPage === totalPages}
-            >
-                <ChevronRight className="h-4 w-4" />
-            </Button>
-            </div>
+            
+            {
+              currentNFTsTokenIds && currentNFTsTokenIds?.length > 0 ? (
+              <div className="mt-16 flex justify-center items-center space-x-2">
+              <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={goToPreviousPage}
+                  disabled={currentPage === 1}
+              >
+                  <ChevronLeft  className="h-4 w-4" />
+              </Button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  size="icon"
+                  onClick={() => goToPage(page)}
+                  >
+                  {page}
+                  </Button>
+              ))}
+              <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={goToNextPage}
+                  disabled={currentPage === totalPages}
+              >
+                  <ChevronRight className="h-4 w-4" />
+              </Button>
+              </div>
+              )
+              :
+              (
+                <div className='flex justify-center items-center mt-36 text-3xl'>No Favorites found!</div>
+              )
+            }
+            
           </main>
         </SidebarInset>
     </DashboardPagesSidebarProvider>
