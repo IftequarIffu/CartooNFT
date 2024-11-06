@@ -30,10 +30,10 @@ export default function LandingPageHeroSection() {
           </div>
           <div className="grid grid-cols-2 gap-4 sm:gap-6">
             {[
-              "/33.svg",
+              "/25.svg",
               "/44.svg",
-              "/55.svg",
-              "/66.svg"
+              "/8.svg",
+              "/19.svg"
             ].map((src, index) => (
               <div key={index} className="relative aspect-square overflow-hidden rounded-xl  shadow-lg transition-transform hover:scale-105">
                 <Image
