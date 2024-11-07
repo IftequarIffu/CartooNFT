@@ -20,6 +20,7 @@ import { categories } from '@/lib/constants'
 import { config } from '@/lib/wagmiConfig'
 import { readContract } from '@wagmi/core'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { Spinner } from '@/components/LoadingSpinner'
 
 
 export default function Marketplace() {
@@ -299,7 +300,9 @@ const filteredNFTTokenIds = React.useMemo(() => {
           <h1 className="text-2xl font-bold mb-4 px-6">Marketplace</h1>
 
           {
-            !currentNFTsTokenIds || currentNFTsTokenIds.length <= 0 ? (<div className='flex justify-center items-center mt-36 text-3xl'>Aww Snap!! No NFTs found</div>) : 
+            !currentNFTsTokenIds || currentNFTsTokenIds.length <= 0 ? (<div className='flex justify-center items-center mt-36 text-3xl'>
+              <Spinner/> 
+              </div>) : 
 
             (
     
