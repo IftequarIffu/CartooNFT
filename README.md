@@ -10,6 +10,7 @@ An NFT Marketplace for Cartoons
 - ShadCN UI - Beautiful styling
 - Rainbow Kit - Wallet connection
 - Rivet Wallet - For seamless wallet interactions
+- Pinata - For IPFS interactions
   
 
 ## 🌟 Features Implemented
